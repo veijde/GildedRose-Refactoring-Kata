@@ -30,6 +30,8 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        // to do
+        for (AbstractItem abstractItem : abstractItems) {
+            abstractItem.updateQuality();
+        }
     }
 }
