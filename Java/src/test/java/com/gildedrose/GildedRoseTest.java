@@ -28,6 +28,22 @@ class GildedRoseTest {
     }
 
     @Test
+    void testAgedBrie() {
+        Item[] items = new Item[] { new Item("Aged Brie", 2, 0) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(1, app.items[0].quality);
+        assertEquals(1, app.items[0].sellIn);
+
+        app.updateQuality();
+
+        assertEquals(2, app.items[0].quality);
+        assertEquals(0, app.items[0].sellIn);
+    }
+
+    @Test
     void testSulfuras() {
         Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 0, 80) };
         GildedRose app = new GildedRose(items);
