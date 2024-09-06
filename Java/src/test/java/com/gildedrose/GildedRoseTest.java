@@ -8,7 +8,7 @@ class GildedRoseTest {
 
     @Test
     void testNormalItemUpdateQuality() {
-        Item[] items = new Item[] { new Item("normal item", 5, 2) };
+        Item[] items = new Item[] { new Item("normal item", 2, 5) };
         GildedRose gildedRose = new GildedRose(items);
 
         gildedRose.updateQuality();
@@ -70,6 +70,15 @@ class GildedRoseTest {
         assertEquals(9, app.items[0].sellIn);
     }
 
+    @Test
+    void testConjuredItemsDegradeTwiceAsFast() {
+        Item[] items = new Item[] { new Item("Conjured Mana Cake", 3, 6) };
+        GildedRose app = new GildedRose(items);
 
+        app.updateQuality();
+
+        assertEquals(4, app.items[0].quality);
+        assertEquals(2, app.items[0].sellIn);
+    }
 
 }
