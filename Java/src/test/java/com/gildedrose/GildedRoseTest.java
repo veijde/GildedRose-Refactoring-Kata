@@ -7,18 +7,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class GildedRoseTest {
 
     @Test
-    void testGenericItemUpdateQuality() {
+    void testNormalItemUpdateQuality() {
         Item[] items = new Item[] { new Item("normal item", 0, 0) };
         GildedRose gildedRose = new GildedRose(items);
 
-        // Call the method that updates item quality
         gildedRose.updateQuality();
 
-        // Assert that after one update, quality is still 0 (it can't be negative)
         assertEquals(0, gildedRose.items[0].quality);
-
-        // Assert that sellIn decreases by 1
         assertEquals(-1, gildedRose.items[0].sellIn);
     }
+
+    @Test
+    void testSulfuras() {
+        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 0, 80) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(80, app.items[0].quality);
+        assertEquals(0, app.items[0].sellIn);
+    }
+
 
 }
